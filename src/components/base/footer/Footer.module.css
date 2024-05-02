@@ -15,8 +15,11 @@
 .socials_container {
     width: 7rem;
     display: flex;
-    justify-content: space-between;
     margin-bottom: 0.5rem;
+}
+
+.socials_container a {
+    margin-right: .25rem;
 }
 
 .footer {

@@ -1,6 +1,6 @@
 import styles from "@/components/home/title_socials/Title.module.css";
-
-import Image from "next/image";
+// import Image from "next/image";
+import { SocialIcon } from "@/components/ui/social-icons";
 
 export default function Title() {
     return (

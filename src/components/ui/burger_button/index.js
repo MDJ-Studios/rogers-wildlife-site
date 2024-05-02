@@ -8,11 +8,10 @@ export default function Burger({ isNavOpen, setNavOpen }) {
     return (
         <nav className={styles.mobile_nav}>
             <button
-                className={isNavOpen ? styles.clickedButton : styles.button}
-                id={styles.mobile_button}
+                className={`${styles.mobile_button} ${isNavOpen ? styles.clickedButton : styles.button}`}
                 onClick={handleClick}
             >
-                {isNavOpen ? <p>Close</p> : <p>Menu</p>}
+                {isNavOpen ? <p className={`${styles.mobile_button} ${styles.close_button}`}>Close</p> : <p>Menu</p>}
             </button>
         </nav>
     );

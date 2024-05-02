@@ -56,14 +56,14 @@ export default function Home() {
                                 <p>We accept community service volunteers as well.</p>
                                 <div className={`${styles.flex_center} ${styles.volunteer_btn_container}`}>
                                     <Link
-                                        href="/volunteer"
+                                        href="/pdfs/rwrc-volunteer-app.pdf"
                                         target="blank"
                                         className={`${styles.small_right_margin} ${styles.no_margin} ${styles.volunteer_btn}`}
                                     >
                                         <button className={styles.section_one_button}>Volunteer Application</button>
                                     </Link>
 
-                                    <a href="pdfs/RWRC-CSR-VOLUNTEER-APP.pdf" target="blank">
+                                    <a href="/pdfs/rwrc-csr-volunteer-app.pdf" target="blank">
                                         <button className={styles.section_one_button}>
                                             Community Service Application
                                         </button>

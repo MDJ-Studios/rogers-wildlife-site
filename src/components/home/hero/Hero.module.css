@@ -1,6 +1,9 @@
 .container_parent {
     height: max-content;
     width: 100%;
+    background-image: url("/images/baldeagle.png");
+    background-size: cover;
+    background-position-y: 30%;
 }
 
 .container_inner_parent {
@@ -35,7 +38,7 @@
 }
 
 .text_head_right {
-    text-align: end;
+    text-align: center;
 }
 
 .text_inc {
@@ -45,7 +48,7 @@
 .sub_header_container {
     text-align: right;
     width: 100%;
-    margin: 1rem 0;
+    /* margin: 1rem 0; */
 }
 
 /* @media (max-width: 768px) {
