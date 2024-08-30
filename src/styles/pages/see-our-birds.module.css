@@ -67,23 +67,3 @@
     width: fit-content;
     padding: 1rem 1rem 0 2rem;
 }
-
-@media (max-width: 816px) {
-    .image_container {
-        height: 18rem;
-        width: 18rem;
-    }
-}
-@media (max-width: 640px) {
-    .image_container {
-        height: 25rem;
-        width: 100%;
-    }
-}
-
-@media (max-width: 425px) {
-    .image_container {
-        height: 17rem;
-        width: 100%;
-    }
-}
