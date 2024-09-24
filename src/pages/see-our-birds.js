@@ -64,7 +64,7 @@ export default function SeeOurBirds({ assets }) {
                 <Layout>
                     <section className={styles.flex_center}>
                         <div className={styles.gallery_parent}>
-                            {assets.length > 0 || assets === null ? (
+                            {assets?.length > 0 || assets === null ? (
                                 assets.map((gallery, index) => (
                                     <div key={index} className={styles.card_container}>
                                         <div className={styles.image_container}>
