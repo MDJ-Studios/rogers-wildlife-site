@@ -1,0 +1,84 @@
+.flex_center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.gallery_parent {
+    width: 70rem;
+    max-width: 1440px;
+    margin: 1rem 0 0 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card_container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 480px;
+    max-height: 480px;
+    width: 300px;
+    margin: 10px 10px 10px 10px;
+    border: 1px solid rgb(184, 184, 184);
+    overflow: hidden;
+    padding: 15px;
+    box-shadow: 2px 2px 12px 2px #e1e0e0;
+    border-radius: 5px;
+}
+
+.image_styles {
+    object-fit: cover;
+}
+
+.image_container {
+    position: relative;
+    width: full;
+    height: 300px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    border-radius: 5px;
+}
+
+.bird_story {
+    font-size: 14px;
+    width: full;
+    height: 200px;
+    max-height: 200px;
+    margin-bottom: 16px;
+}
+
+.donate_button_container {
+    display: flex;
+}
+
+.error_message {
+    height: calc(100vh - 35rem);
+    width: fit-content;
+    padding: 1rem 1rem 0 2rem;
+}
+
+@media (max-width: 640px) {
+    .image_container {
+        height: 25rem;
+        width: 100%;
+    }
+
+    .card_container {
+        width: 100%;
+    }
+
+    .donate_button_container {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 425px) {
+    .image_container {
+        height: 17rem;
+        width: 100%;
+    }
+}

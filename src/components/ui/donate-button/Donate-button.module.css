@@ -1,0 +1,25 @@
+.button {
+    width: 11rem;
+    margin-bottom: 1rem;
+    background-color: var(--primary-light);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.gallery_donate_button {
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+    width: 220px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary-light);
+    color: #fff;
+}
+

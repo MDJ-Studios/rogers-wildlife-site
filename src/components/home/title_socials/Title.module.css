@@ -27,7 +27,7 @@
     justify-content: space-between;
     width: 10rem;
     height: 100%;
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 .title_container {
@@ -63,6 +63,7 @@
     }
     .inner_container {
         flex-direction: column;
+        height: 7rem;
     }
 
     .title_container {

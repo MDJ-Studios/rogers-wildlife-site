@@ -3,8 +3,10 @@
         "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 
     --primary: #355e3b;
+    --primary-light: #4a8453    ;
     --secondary: #d1d1d1;
     --accent: #484848;
+    --social-blue: #2a6df3;
 
     --text: #333333;
     --button-text: #ffffff;

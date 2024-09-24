@@ -31,6 +31,11 @@ const links = [
         slug: "/how-to-help",
         text: "How to Help",
     },
+    ,
+    // {
+    //     slug: "/see-our-birds",
+    //     text: "See Our Birds",
+    // },
     {
         slug: "/contact-us",
         text: "Contact Us",

@@ -24,6 +24,10 @@
     margin-left: 2rem;
 }
 
+.PageSection a {
+    color: var(--primary);
+}
+
 .LineBreak {
     display: block;
     margin-top: 0.25rem;

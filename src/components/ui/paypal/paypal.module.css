@@ -1,0 +1,105 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    /* background-color: #f5f5f5; */
+}
+
+/* Ensure horizontal layout on larger screens */
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+    }
+}
+
+/* Ensure vertical layout on smaller screens */
+@media (max-width: 767px) {
+    .container {
+        flex-direction: column;
+    }
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:last-of-type {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-height: 200px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.title {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #333333;
+    text-align: center;
+}
+
+.imageWrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.image {
+    max-width: 150px; /* Adjusted to make the image smaller */
+    height: auto;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+    background-color: #f9f9f9;
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+.amountInput {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+.input {
+    width: calc(100% - 30px);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+    background-color: #f9f9f9;
+    font-size: 1em;
+}
+
+.donateButton {
+    display: block;
+    margin: 20px auto 0;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.donateButton:hover {
+    opacity: 0.8;
+}
