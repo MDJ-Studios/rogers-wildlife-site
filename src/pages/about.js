@@ -123,15 +123,6 @@ export default function Home() {
                                         construction of twelve large flight cages.
                                         <br />
                                         <br />
-                                        Our Community Service Restitution (CSR) program allows eligible court-mandated
-                                        individuals to fulfill community service hours assigned as a condition of
-                                        probation. More than one hundred individuals come to the Wildlife Center each
-                                        year to fulfill their service hours. Our staff and volunteers work side-by-side
-                                        with these individuals, with the goal of fostering a sense of responsibility to
-                                        care for all living creatures and the importance of preserving our natural
-                                        resources and wildlife inhabitants.
-                                        <br />
-                                        <br />
                                         In August 2006, Texas Parks and Wildlife added RWRC to its Prairies & Pineywoods
                                         Wildlife Trail. Located at the edge of the Trinity River, bordering the Great
                                         Trinity Forest, the Center provides wonderful opportunities for birders to view

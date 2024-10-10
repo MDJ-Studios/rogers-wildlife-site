@@ -1,0 +1,46 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/index.php",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/about.php",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/found-a-bird.php",
+      "destination": "/found-a-bird",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-help.php",
+      "destination": "/how-to-help",
+      "permanent": true
+    },
+    {
+      "source": "/in-the-news.php",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/educational-birds.php",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/photo-gallery.php",
+      "destination": "/",
+      "permanent": true
+    }
+  ]
+}

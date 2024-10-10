@@ -68,9 +68,8 @@ export default function Home() {
                             <div className={styles.section_container}>
                                 <h3 id="volunteering">Volunteering</h3>
                                 <p className={styles.small_bottom_margin}>
-                                    We always need volunteers and can fully train you to provide care for the birds on
-                                    site. No prior experience is needed. Just print out the volunteer application and
-                                    bring it with you when you would like to volunteer!
+                                We always need volunteers and can fully train you to care for the birds on site. 
+                                No prior experience is required. Just click on the button below to access and print out the volunteer application and bring it with you when you would like to volunteer!
                                 </p>
 
                                 <div className={`${styles.flex_center} ${styles.volunteer_btn_container}`}>
@@ -81,12 +80,6 @@ export default function Home() {
                                     >
                                         <button className={styles.section_one_button}>Volunteer Application</button>
                                     </Link>
-
-                                    <a href="/pdfs/rwrc-csr-volunteer-app.pdf" target="blank">
-                                        <button className={styles.section_one_button}>
-                                            Community Service Application
-                                        </button>
-                                    </a>
                                 </div>
 
                                 <p>What positions do we need help with?</p>
@@ -108,7 +101,6 @@ export default function Home() {
                                     though you could give a few hours out of a day, week, or month to lend a helping
                                     hand with a project, PLEASE give us a call!
                                 </p>
-                                <p>We accept community service volunteers as well.</p>
                             </div>
                             {/* Section 2 */}
                             <div className={styles.section_container}>

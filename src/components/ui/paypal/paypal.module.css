@@ -19,6 +19,10 @@
     .container {
         flex-direction: column;
     }
+
+    .card {
+        min-width: 100%;
+    }
 }
 
 .card {

@@ -65,6 +65,10 @@
     .volunteer_btn {
         margin: 1rem 0;
     }
+    .section_container > h3 {
+        text-align: center;
+    }
+    
 }
 
 @media (max-width: 425px) {
