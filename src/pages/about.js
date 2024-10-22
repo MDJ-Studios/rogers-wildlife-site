@@ -79,15 +79,15 @@ export default function Home() {
                                 {/* quote  */}
                                 <div className={`${styles.body_bot_quote}`}>
                                     <p>
-                                        Over the last decade, RWRC has provided medical treatment and care for more than
-                                        40,000 birds.
+                                        Over the last 25 years, RWRC has provided medical treatment and care for more than
+                                        120,000 birds.
                                     </p>
                                 </div>
                                 {/* paragraph */}
                                 <div>
                                     <p className={`${styles.body_bot_p}`}>
-                                        Over the last decade, RWRC has provided medical treatment and care for more than
-                                        forty thousand birds. The majority of birds that we receive come to us with
+                                        Over the last 25 years, RWRC has provided medical treatment and care for more than
+                                        120,000 birds. The majority of birds that we receive come to us with
                                         life-threatening injuries as a result of animal attacks, nest displacement
                                         (orphaned), automobile strikes, natural/man-made disasters, or abuse. Our Center
                                         receives rescued birds from individuals, the SPCA, various city animal control
@@ -112,7 +112,7 @@ export default function Home() {
                                         environmental educational facility. Each year, hundreds of students and their
                                         families visit our Outdoor Learning Center to observe Texas wildlife and learn
                                         about the importance of conservation and protection of our Texas environment.
-                                        Rogers Wildlife offers a variety of educational programs from Pre-K through 12th
+                                        Rogers Wildlife offers a variety of educational opportunities from Pre-K through 12th
                                         grade. Our primary objective is to inspire everyone that visits the Outdoor
                                         Learning Center to be a champion of wildlife conservation in their own
                                         respective communities and schools.

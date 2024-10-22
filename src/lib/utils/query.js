@@ -15,20 +15,3 @@ export const GET_IMAGES = gql`
         }
     }
 `;
-
-/*
-    example data:
-{
-  "data": {
-    "assets": [
-      {
-        "url": "url_here",
-        "fileName": "birb.jpg",
-        "imageSingle": [
-          {
-            "bird_story": null,
-            "image_description": "An image of a hawk"
-          }
-        ]
-      },
-    */

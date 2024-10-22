@@ -79,7 +79,7 @@ export default function SeeOurBirds({ assets }) {
                                         <h5><strong>{gallery.imageGallery[0]?.species}</strong></h5>
                                         <p className={styles.bird_story}>{gallery.imageGallery[0]?.story}</p>
                                         <div className={styles.donate_button_container}>
-                                            <DonateButton onGallery={true} buttonText={"Click to Support " + gallery.imageGallery[0]?.name} />
+                                            <DonateButton onGallery={true} buttonText={"Donate to Support " + gallery.imageGallery[0]?.name} />
                                         </div>
                                     </div>
                                 )

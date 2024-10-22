@@ -50,15 +50,10 @@ export default function Home() {
                                     <h2>Hours</h2>
                                     <p>
                                         <span className={styles.LineBreak}>
-                                            Open every day, holiday hours may differ
+                                            We are open seven days a week 9AM till 4PM.
                                         </span>
-                                        <span className={styles.LineBreak}></span>
                                         <span className={styles.LineBreak}>
-                                            <strong>Fall Hours:</strong> (<i>starting Sept. 1 every day</i>) 9am - 4pm
-                                        </span>
-                                        <span className={styles.LineBreak}></span>
-                                        <span className={styles.LineBreak}>
-                                            <strong>Summer Hours:</strong> 10am - 4pm
+                                            Holiday hours may differ.
                                         </span>
                                     </p>
                                 </div>

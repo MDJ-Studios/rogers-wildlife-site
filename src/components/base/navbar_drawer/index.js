@@ -32,10 +32,10 @@ const links = [
         text: "How to Help",
     },
     ,
-    // {
-    //     slug: "/see-our-birds",
-    //     text: "See Our Birds",
-    // },
+    {
+        slug: "/see-our-birds",
+        text: "See Our Birds",
+    },
     {
         slug: "/contact-us",
         text: "Contact Us",

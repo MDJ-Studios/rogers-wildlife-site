@@ -55,7 +55,7 @@ export default function Navbar({ setNavOpen, isNavOpen }) {
                     <NavLink linkText="About" path="/about" isScrollLink={false} />
                     <NavLink linkText="Found A Bird" path="/found-a-bird" isScrollLink={false} />
                     <NavLink linkText="How To Help" path="/how-to-help" isScrollLink={false} />
-                    {/* <NavLink linkText="See Our Birds" path="/see-our-birds" isScrollLink={false} /> */}
+                    <NavLink linkText="See Our Birds" path="/see-our-birds" isScrollLink={false} />
                     <NavLink linkText="Contact Us" path="/contact-us" isScrollLink={false} />
                 </ul>
                 <NavDrawer setNavOpen={setNavOpen} isNavOpen={isNavOpen} />

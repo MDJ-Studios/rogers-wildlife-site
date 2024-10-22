@@ -5,9 +5,12 @@ import Hero from "@/components/home/hero";
 import Title from "@/components/home/title_socials";
 import Intro from "@/components/home/intro";
 import Map from "@/components/home/map_actions";
+import graphQLClient from "@/lib/utils/graphql-client";
+import { GET_IMAGES } from "@/lib/utils/query";
 
 const inter = Inter({ subsets: ["latin"] });
-export default function Home() {
+
+export default function Home({ birds = [] }) {
     return (
         <>
             <Head>
@@ -33,10 +36,44 @@ export default function Home() {
                 <Hero />
                 <Layout>
                     <Title />
-                    <Intro />
+                    <Intro birds={birds} />
                     <Map />
                 </Layout>
             </main>
         </>
     );
 }
+
+export async function getStaticProps() {
+    try {
+        const data = await graphQLClient.request(GET_IMAGES);
+        const assets = data.assets || [];
+
+        // Map and filter the assets to get featured birds
+        const featuredBirds = assets
+            .filter(asset =>
+                asset.imageGallery?.[0] &&
+                ["Prince", "Shiloh", "Chitters"].includes(asset.imageGallery[0].name)
+            )
+            .map(asset => ({
+                url: asset.url, // Image URL from the asset object
+                ...asset.imageGallery[0], // Spread the rest of the bird details
+            }));
+
+        return {
+            props: {
+                birds: featuredBirds,
+            },
+            revalidate: 60, // Revalidate every 60 seconds
+        };
+    } catch (error) {
+        console.error("Error fetching bird data:", error);
+
+        return {
+            props: {
+                birds: [],
+            },
+        };
+    }
+}
+
