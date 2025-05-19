@@ -42,13 +42,19 @@
     margin-bottom: 1rem;
 }
 
-.section_one_button {
+.section_one_button, .section_two_button {
     border: none;
     border-radius: 15px;
     padding: 0.5rem 1rem 0.5rem 1rem;
     background-color: var(--primary);
     color: var(--button-text);
     width: 20rem;
+}
+
+.section_two_button {
+    margin-top: 2rem;
+    width: 20rem;
+    display: inline-block;
 }
 
 .volunteer_btn_container {
@@ -67,6 +73,10 @@
     }
     .section_container > h3 {
         text-align: center;
+    }
+    .section_two_button_container {
+        display: flex;
+        justify-content: center;
     }
     
 }

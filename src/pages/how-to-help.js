@@ -56,8 +56,11 @@ export default function Home() {
                                             position: "relative",
                                             border: 0,
                                             width: "100%",
-                                            height: "83rem",
+                                            height: "28rem",
                                             padding: 0,
+                                            marginLeft: 'auto',
+                                            marginRight: 'auto',
+                                            marginTop: '3rem'
                                         }}
                                         src="https://www.zeffy.com/embed/donation-form/949079ad-523d-417a-a441-e947ee0271f9"
                                         allowpaymentrequest="true"
@@ -143,6 +146,14 @@ export default function Home() {
                                         <li>Electrical supplies</li>
                                         <li>AA, AAA, D Cell batteries</li>
                                     </ul>
+                                </div>
+                                <div className={styles.section_two_button_container}>
+                                    <Link 
+                                        target="_blank" 
+                                        href="https://www.amazon.com/hz/wishlist/ls/2G7903YCKJDNU?ref_=wl_share" 
+                                        className={styles.section_two_button}>
+                                            Click Here For Our Amazon Wishlist
+                                    </Link>
                                 </div>
                             </div>
                             <div className={styles.section_container}>
