@@ -2,6 +2,8 @@ import Head from "next/head";
 import { Inter } from "next/font/google";
 import Layout from "@/components/base/layout";
 import Hero from "@/components/home/hero";
+import SEO from "@/components/seo";
+import { SITE_URL, generateBreadcrumbs } from "@/lib/seo-config";
 
 import Image from "next/image";
 
@@ -9,21 +11,59 @@ import styles from "@/styles/pages/found-a-bird.module.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const breadcrumbs = generateBreadcrumbs([
+    { name: "Home", url: SITE_URL },
+    { name: "Found a Bird", url: `${SITE_URL}/found-a-bird` },
+]);
+
+const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+        {
+            "@type": "Question",
+            name: "How do I know if a bird needs help?",
+            acceptedAnswer: {
+                "@type": "Answer",
+                text: "A bird needs immediate medical attention if it has ingested toxic substances, hit a window or building, been hit by a car, been attacked by an animal, is having difficulty breathing, showing neurological symptoms, having difficulty flying or walking, is unable to get away from you, has vision issues, is covered in oil or stuck to a sticky trap, or is comfortable with humans.",
+            },
+        },
+        {
+            "@type": "Question",
+            name: "Why can't I keep a wild bird?",
+            acceptedAnswer: {
+                "@type": "Answer",
+                text: "Wild birds need specifically formulated diets and can develop crippling nutritional diseases without them. They may also have injuries requiring avian veterinary expertise. Additionally, almost all wild birds are protected by The Migratory Bird Treaty Act, and according to federal law, wild birds can only be kept for up to 48 hours by unlicensed persons.",
+            },
+        },
+        {
+            "@type": "Question",
+            name: "How do I care for a baby bird overnight?",
+            acceptedAnswer: {
+                "@type": "Answer",
+                text: "Place the bird in a securely lidded box on a towel with air holes. Put the box on a heating pad on the lowest setting. Keep it in a quiet, dark area away from children and pets. If the bird begs, feed it dry cat or dog food soaked in water. Do NOT give the bird water with an eye dropper. Bring it to a rehabilitator as soon as possible.",
+            },
+        },
+    ],
+};
+
 export default function Home() {
     return (
         <>
+            <SEO
+                title="Found an Injured or Orphaned Bird? | Rogers Wildlife Rehabilitation Center - Dallas/Fort Worth"
+                description="Found an injured, sick, or orphaned bird near Dallas-Fort Worth? Learn how to help and bring it to Rogers Wildlife Rehabilitation Center in Hutchins, TX. Call (972) 225-4000."
+                path="/found-a-bird"
+            />
             <Head>
-                <title>Found a Bird | Rogers Wildlife Rehabilitation Center</title>
-                <meta name="description" content="How to Know If a Bird Needs Help" />
-                <link rel="canonical" href="https://rogerswildlife.org/found-a-bird" />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <link rel="icon" href="/favicon.ico" />
-                <meta property="og:title" content="Found a Bird | Rogers Wildlife Rehabilitation Center" />
-                <meta property="og:description" content="If you have been caring for a wild bird, you should bring it to an avian wildlife rehabilitor as soon as possible. We understand your good intentions but the average american home is not the place for a wild bird. The sooner the bird can be given a proper diet and medical care, the better its chances." />
-                <meta property="og:url" content="https://rogerswildlife.org/found-a-bird" />
-                <meta property="og:type" content="website" />
-                <meta property="og:image" content="/images/Mr-Chitters-on-log.jpg" />
-                <meta name="twitter:card" content="summary_large_image" />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
+                />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+                />
             </Head>
             <main className={`${inter.className}`}>
                 <Hero />
@@ -216,7 +256,7 @@ export default function Home() {
                                     <li>
                                         <a
                                             className={styles.link}
-                                            href="http://tpwd.texas.gov/huntwild/wild/rehab/list/"
+                                            href="https://tpwd.texas.gov/huntwild/wild/rehab/list/"
                                         >
                                             List of Texas Wildlife Rehabilitators by County
                                         </a>{" "}
@@ -229,7 +269,7 @@ export default function Home() {
                                     <li>
                                         <a
                                             className={styles.link}
-                                            href="http://tpwd.texas.gov/huntwild/wild/rehab/list/"
+                                            href="https://tpwd.texas.gov/huntwild/wild/rehab/list/"
                                         >
                                             List of Texas Wildlife Rehabilitators by County
                                         </a>{" "}
@@ -258,7 +298,7 @@ export default function Home() {
                                         <div>
                                             <p>Texas Parks & Wildlife</p>
                                             <p>972-226-9966</p>
-                                            <a className={styles.link} href="http://www.tpwd.state.tx.us/">
+                                            <a className={styles.link} href="https://www.tpwd.state.tx.us/">
                                                 www.tpwd.state.tx.us
                                             </a>
                                         </div>
@@ -269,13 +309,13 @@ export default function Home() {
                                         <div>
                                             <a
                                                 className={styles.link}
-                                                href="http://tpwd.texas.gov/huntwild/wild/rehab/list/"
+                                                href="https://tpwd.texas.gov/huntwild/wild/rehab/list/"
                                             >
                                                 Wildlife Rehabilitators by County
                                             </a>
                                             <a
                                                 className={styles.link}
-                                                href="http://tpwd.texas.gov/huntwild/wild/rehab/protected/"
+                                                href="https://tpwd.texas.gov/huntwild/wild/rehab/protected/"
                                             >
                                                 Legal Information
                                             </a>
@@ -294,7 +334,7 @@ export default function Home() {
                                     <div>
                                         <p>US Fish & Wildlife Service</p>
                                         <p>505-248-7889</p>
-                                        <a className={styles.link} href="http://www.fws.gov/">
+                                        <a className={styles.link} href="https://www.fws.gov/">
                                             www.fws.gov
                                         </a>
                                     </div>
@@ -311,8 +351,8 @@ export default function Home() {
                                     <div>
                                         <p>Blackland Prairie Raptor Center</p>
                                         <p>469-964-9696</p>
-                                        <a className={styles.link} href="http://www.bpraptorcenter.org/">
-                                            http://www.bpraptorcenter.org/
+                                        <a className={styles.link} href="https://www.bpraptorcenter.org/">
+                                            https://www.bpraptorcenter.org/
                                         </a>
                                     </div>
                                 </div>

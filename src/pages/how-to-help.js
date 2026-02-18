@@ -2,6 +2,8 @@ import Head from "next/head";
 import { Inter } from "next/font/google";
 import Layout from "@/components/base/layout";
 import Hero from "@/components/home/hero";
+import SEO from "@/components/seo";
+import { SITE_URL, generateBreadcrumbs } from "@/lib/seo-config";
 
 import Image from "next/image";
 
@@ -12,35 +14,48 @@ import Venmo from "@/components/ui/venmo";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const breadcrumbs = generateBreadcrumbs([
+    { name: "Home", url: SITE_URL },
+    { name: "How to Help", url: `${SITE_URL}/how-to-help` },
+]);
+
+const donateActionSchema = {
+    "@context": "https://schema.org",
+    "@type": "DonateAction",
+    name: "Donate to Rogers Wildlife Rehabilitation Center",
+    description: "Support bird rescue and rehabilitation in Dallas-Fort Worth, TX",
+    recipient: {
+        "@id": "https://rogerswildlife.org/#organization",
+    },
+    url: "https://rogerswildlife.org/how-to-help",
+};
+
 export default function Home() {
     return (
         <>
+            <SEO
+                title="Donate to Bird Rescue | Support Rogers Wildlife Rehabilitation Center in Texas"
+                description="Donate to Rogers Wildlife Rehabilitation Center, a 501(c)(3) bird rescue in Texas. Give via Zeffy, PayPal, or Venmo. Your donation funds food, medical care, and shelter for thousands of rescued birds."
+                path="/how-to-help"
+            />
             <Head>
-                <title>How to Help | Rogers Wildlife Rehabilitation Center</title>
-                <meta
-                    name="description"
-                    content="With your help, we can provide food, medical care and safe housing to the thousands of sick, injured and orphaned birds we take in yearly. On average, the costs to run RWRC $740 per day, that's just over $22,000 a month! Your donations are hugely appreciated as we rely entirely on private donations as we receive no federal, state or local government funding."
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
                 />
-                <link rel="canonical" href="https://rogerswildlife.org/how-to-help" />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <link rel="icon" href="/favicon.ico" />
-                <meta property="og:title" content="How to Help | Rogers Wildlife Rehabilitation Center" />
-                <meta
-                    property="og:description"
-                    content="With your help, we can provide food, medical care and safe housing to the thousands of sick, injured and orphaned birds we take in yearly. On average, the costs to run RWRC $740 per day, that's just over $22,000 a month! Your donations are hugely appreciated as we rely entirely on private donations as we receive no federal, state or local government funding."
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(donateActionSchema) }}
                 />
-                <meta property="og:url" content="https://rogerswildlife.org/how-to-help" />
-                <meta property="og:type" content="website" />
-                <meta property="og:image" content="/images/Mr-Chitters-on-log.jpg" />
-                <meta name="twitter:card" content="summary_large_image" />
             </Head>
             <main className={`${inter.className}`}>
                 <Hero />
                 <Layout>
                     <div className={`${styles.flex_center} ${styles.parent_container}`}>
                         <div className={styles.inner_container}>
+                            <h1>How to Help Rogers Wildlife</h1>
                             <div className={styles.section_container}>
-                                <h3>Monetary Donations</h3>
+                                <h2>Monetary Donations</h2>
                                 <p>
                                     With your help, we can provide food, medical care and safe housing to the thousands
                                     of sick, injured and orphaned birds we take in yearly. On average, the costs to run
@@ -69,7 +84,7 @@ export default function Home() {
                                 </div>
                             </div>
                             <div className={styles.section_container}>
-                                <h3 id="volunteering">Volunteering</h3>
+                                <h2 id="volunteering">Volunteering</h2>
                                 <p className={styles.small_bottom_margin}>
                                 We always need volunteers and can fully train you to care for the birds on site. 
                                 No prior experience is required. Just click on the button below to access and print out the volunteer application and bring it with you when you would like to volunteer!
@@ -106,16 +121,17 @@ export default function Home() {
                             </div>
                             {/* Section 2 */}
                             <div className={styles.section_container}>
-                                <h3>Item Donations</h3>
+                                <h2>Item Donations</h2>
                                 <a
                                     href="https://www.amazon.com/registry/wishlist/2G7903YCKJDNU/ref=cm_sw_r_cp_an_wl_o_XrfAxbBQ4G2D3"
                                     target="_blank"
+                                    rel="noopener noreferrer"
                                 >
                                     <Image
                                         src={"/images/amazon-wishlist.jpg"}
                                         width={270}
                                         height={100}
-                                        alt="amazon wishlist image"
+                                        alt="Rogers Wildlife Rehabilitation Center Amazon Wishlist - donate supplies for bird rescue"
                                         className={styles.small_bottom_margin}
                                     />
                                 </a>
@@ -148,20 +164,21 @@ export default function Home() {
                                     </ul>
                                 </div>
                                 <div className={styles.section_two_button_container}>
-                                    <Link 
-                                        target="_blank" 
-                                        href="https://www.amazon.com/hz/wishlist/ls/2G7903YCKJDNU?ref_=wl_share" 
+                                    <Link
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        href="https://www.amazon.com/hz/wishlist/ls/2G7903YCKJDNU?ref_=wl_share"
                                         className={styles.section_two_button}>
                                             Click Here For Our Amazon Wishlist
                                     </Link>
                                 </div>
                             </div>
                             <div className={styles.section_container}>
-                                <h3>Donate With PayPal</h3>
+                                <h2>Donate With PayPal</h2>
                                 <PayPal />
                             </div>
                             <div className={styles.section_container}>
-                                <h3>Donate With Venmo</h3>
+                                <h2>Donate With Venmo</h2>
                                 <Venmo />
                             </div>
                         </div>

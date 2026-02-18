@@ -7,30 +7,28 @@ import Intro from "@/components/home/intro";
 import Map from "@/components/home/map_actions";
 import graphQLClient from "@/lib/utils/graphql-client";
 import { GET_IMAGES } from "@/lib/utils/query";
+import SEO from "@/components/seo";
+import { SITE_URL, generateBreadcrumbs } from "@/lib/seo-config";
 
 const inter = Inter({ subsets: ["latin"] });
+
+const breadcrumbs = generateBreadcrumbs([
+    { name: "Home", url: SITE_URL },
+]);
 
 export default function Home({ birds = [] }) {
     return (
         <>
+            <SEO
+                title="Rogers Wildlife Rehabilitation Center | Bird Rescue & Sanctuary in Dallas-Fort Worth, TX"
+                description="Rogers Wildlife Rehabilitation Center is a 501(c)(3) nonprofit bird rescue in Dallas-Fort Worth, TX. Donate to help us save injured, sick, and orphaned birds. Visit or volunteer today."
+                path=""
+            />
             <Head>
-                <title>Home | Rogers Wildlife Rehabilitation Center</title>
-                <meta
-                    name="description"
-                    content="Rogers Wildlife Rehabilitation Center is a 501c3 nonprofit wildlife rescue organization in the Dallas/Fort-Worth metroplex specializing in the rescue and rehabilitation of injured, sick and orphaned birds of all types."
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
                 />
-                <link rel="canonical" href="https://rogerswildlife.org" />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <link rel="icon" href="/favicon.ico" />
-                <meta property="og:title" content="Home | Rogers Wildlife Rehabilitation Center" />
-                <meta
-                    property="og:description"
-                    content="Rogers Wildlife Rehabilitation Center is a 501c3 nonprofit wildlife rescue organization in the Dallas/Fort-Worth metroplex specializing in the rescue and rehabilitation of injured, sick and orphaned birds of all types."
-                />
-                <meta property="og:url" content="https://rogerswildlife.org" />
-                <meta property="og:type" content="website" />
-                <meta property="og:image" content="/images/Mr-Chitters-on-log.jpg" />
-                <meta name="twitter:card" content="summary_large_image" />
             </Head>
             <main className={`${inter.className}`}>
                 <Hero />

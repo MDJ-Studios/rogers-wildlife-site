@@ -4,33 +4,61 @@ import Head from "next/head";
 import { Inter } from "next/font/google";
 import Layout from "@/components/base/layout";
 import Hero from "@/components/home/hero";
+import SEO from "@/components/seo";
+import { SITE_URL, generateBreadcrumbs } from "@/lib/seo-config";
 import styles from "@/styles/pages/contact-us.module.css";
 import Map from "@/components/ui/map";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function ContactUs() {
+const breadcrumbs = generateBreadcrumbs([
+    { name: "Home", url: SITE_URL },
+    { name: "Contact Us", url: `${SITE_URL}/contact-us` },
+]);
 
+const animalShelterSchema = {
+    "@context": "https://schema.org",
+    "@type": "AnimalShelter",
+    name: "Rogers Wildlife Rehabilitation Center",
+    address: {
+        "@type": "PostalAddress",
+        streetAddress: "1430 E Cleveland Rd",
+        addressLocality: "Hutchins",
+        addressRegion: "TX",
+        postalCode: "75141",
+        addressCountry: "US",
+    },
+    telephone: "(972) 225-4000",
+    openingHoursSpecification: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+            "Monday", "Tuesday", "Wednesday", "Thursday",
+            "Friday", "Saturday", "Sunday",
+        ],
+        opens: "09:00",
+        closes: "16:00",
+    },
+    url: "https://rogerswildlife.org/contact-us",
+    hasMap: "https://maps.google.com/?q=1430+E+Cleveland+Rd+Hutchins+TX+75141",
+};
+
+export default function ContactUs() {
     return (
         <>
+            <SEO
+                title="Contact & Visit Us | Rogers Wildlife Rehabilitation Center - Hutchins, TX"
+                description="Visit Rogers Wildlife Rehabilitation Center at 1430 E Cleveland Rd, Hutchins, TX 75141. Open 7 days a week, 9AM-4PM. Call (972) 225-4000 for injured bird drop-offs."
+                path="/contact-us"
+            />
             <Head>
-                <title>Contact Us | Rogers Wildlife Rehabilitation Center</title>
-                <meta
-                    name="description"
-                    content="We are open for bird drop offs during normal operating hours. Please be patient, we are all volunteers and doing the best we can with the volume of birds coming in."
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
                 />
-                <link rel="canonical" href="https://rogerswildlife.org/contact-us" />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <link rel="icon" href="/favicon.ico" />
-                <meta property="og:title" content="Contact Us | Rogers Wildlife Rehabilitation Center" />
-                <meta
-                    property="og:description"
-                    content="We are open for bird drop offs during normal operating hours. Please be patient, we are all volunteers and doing the best we can with the volume of birds coming in."
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(animalShelterSchema) }}
                 />
-                <meta property="og:url" content="https://rogerswildlife.org/contact-us" />
-                <meta property="og:type" content="website" />
-                <meta property="og:image" content="/images/Mr-Chitters-on-log.jpg" />
-                <meta name="twitter:card" content="summary_large_image" />
             </Head>
             <main className={`${inter.className}`}>
                 <Hero />
@@ -88,7 +116,7 @@ export default function ContactUs() {
                                 <ul>
                                     <li>
                                         <u>
-                                            <a href="http://tpwd.texas.gov/huntwild/wild/rehab/list/" target="_blank">
+                                            <a href="https://tpwd.texas.gov/huntwild/wild/rehab/list/" target="_blank" rel="noopener noreferrer">
                                                 List of Texas Wildlife Rehabilitators by County
                                             </a>
                                         </u>{" "}

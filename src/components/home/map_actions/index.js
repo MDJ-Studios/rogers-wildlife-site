@@ -10,13 +10,13 @@ export default function MapContainer() {
             <div className={styles.inner_container}>
                 <div className={styles.actions_container}>
                     <Link className={styles.margin_bottom} href="/how-to-help#volunteering">
-                        <Image src="/volunteerVector.svg" height={100} width={100} alt="volunteer image link" />
+                        <Image src="/volunteerVector.svg" height={100} width={100} alt="Volunteer at Rogers Wildlife Rehabilitation Center" />
                     </Link>
                     <button type="button" className={`${styles.margin_bottom} ${styles.donate_button}`} zeffy-form-link="https://www.zeffy.com/embed/donation-form/949079ad-523d-417a-a441-e947ee0271f9?modal=true">
-                        <Image src="/donateVector.svg" height={100} width={100} alt="donation image link" />
+                        <Image src="/donateVector.svg" height={100} width={100} alt="Donate to Rogers Wildlife Rehabilitation Center" />
                     </button>
                     <Link href="/contact-us">
-                        <Image src="/contactVector.svg" height={100} width={100} alt="contact image link" />
+                        <Image src="/contactVector.svg" height={100} width={100} alt="Contact Rogers Wildlife Rehabilitation Center" />
                     </Link>
                 </div>
                 <Map />

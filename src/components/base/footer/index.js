@@ -46,9 +46,12 @@ export default function Footer() {
                 <div className={styles.footer_links}>{links}</div>
                 <div className={styles.footer_links}>{linksAlt}</div>
                 <br />
-                <div>
-                    <p>Rogers Wildlife Rehabilitation Center <br />1430 E Cleveland Rd<br />Hutchins, TX 75141</p>
-                </div>
+                <address>
+                    Rogers Wildlife Rehabilitation Center<br />
+                    1430 E Cleveland Rd<br />
+                    Hutchins, TX 75141<br />
+                    <a href="tel:1-972-225-4000">(972) 225-4000</a>
+                </address>
                 <br />
                 <div>
                     <p>

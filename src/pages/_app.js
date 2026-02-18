@@ -1,6 +1,76 @@
 import "@/styles/globals.css";
 import "@/utils/fortawesomeconfig";
 import { useEffect, useCallback } from "react";
+import Head from "next/head";
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Organization", "AnimalShelter"],
+      "@id": "https://rogerswildlife.org/#organization",
+      name: "Rogers Wildlife Rehabilitation Center",
+      alternateName: "RWRC",
+      url: "https://rogerswildlife.org",
+      logo: "https://rogerswildlife.org/images/Mr-Chitters-on-log.jpg",
+      description:
+        "A 501(c)(3) nonprofit bird rescue and rehabilitation center in Dallas-Fort Worth, Texas that has treated over 120,000 birds since 1989.",
+      telephone: "(972) 225-4000",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "1430 E Cleveland Rd",
+        addressLocality: "Hutchins",
+        addressRegion: "TX",
+        postalCode: "75141",
+        addressCountry: "US",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 32.5133,
+        longitude: -96.7058,
+      },
+      openingHoursSpecification: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ],
+        opens: "09:00",
+        closes: "16:00",
+      },
+      sameAs: [
+        "https://www.facebook.com/rogerswildlife/",
+        "https://www.instagram.com/rogerswildlife/",
+        "https://www.pinterest.com/rogerswildlife/",
+      ],
+      nonprofitStatus: "Nonprofit501c3",
+      foundingDate: "1989",
+      areaServed: {
+        "@type": "GeoCircle",
+        geoMidpoint: {
+          "@type": "GeoCoordinates",
+          latitude: 32.7767,
+          longitude: -96.797,
+        },
+        geoRadius: "100 mi",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://rogerswildlife.org/#website",
+      url: "https://rogerswildlife.org",
+      name: "Rogers Wildlife Rehabilitation Center",
+      publisher: {
+        "@id": "https://rogerswildlife.org/#organization",
+      },
+    },
+  ],
+};
 
 export default function App({ Component: Page, pageProps }) {
   // overlay and iframeContainer are created inside the effect when needed
@@ -188,5 +258,17 @@ export default function App({ Component: Page, pageProps }) {
     };
   }, [cacheBustUrl, adjustIframeContainer, hideOverlay, showOverlay]);
 
-  return <Page {...pageProps} />;
+  return (
+    <>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
+      </Head>
+      <Page {...pageProps} />
+    </>
+  );
 }

@@ -3,32 +3,31 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import Layout from "@/components/base/layout";
 import Hero from "@/components/home/hero";
+import SEO from "@/components/seo";
+import { SITE_URL, generateBreadcrumbs } from "@/lib/seo-config";
 
 import styles from "@/styles/pages/about.module.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const breadcrumbs = generateBreadcrumbs([
+    { name: "Home", url: SITE_URL },
+    { name: "Our Story", url: `${SITE_URL}/about` },
+]);
+
 export default function Home() {
     return (
         <>
+            <SEO
+                title="Our Story | Rogers Wildlife Rehabilitation Center - 501(c)(3) Bird Rescue in Hutchins, TX"
+                description="Learn about Rogers Wildlife Rehabilitation Center, a 501(c)(3) nonprofit that has treated over 120,000 birds since 1989. Located in Hutchins, TX near Dallas. Volunteer or donate today."
+                path="/about"
+            />
             <Head>
-                <title>About | Rogers Wildlife Rehabilitation Center</title>
-                <meta
-                    name="description"
-                    content="Rogers Wildlife Rehabilitation Center (RWRC) is a 501c3 non-profit wildlife organization whose purpose is to provide care and rehabilitation to injured, sick and orphaned birds with the goal of returning them to their natural environment."
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
                 />
-                <link rel="canonical" href="https://rogerswildlife.org/about" />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <link rel="icon" href="/favicon.ico" />
-                <meta property="og:title" content="About | Rogers Wildlife Rehabilitation Center" />
-                <meta
-                    property="og:description"
-                    content="Rogers Wildlife Rehabilitation Center (RWRC) is a 501c3 non-profit wildlife organization whose purpose is to provide care and rehabilitation to injured, sick and orphaned birds with the goal of returning them to their natural environment."
-                />
-                <meta property="og:url" content="https://rogerswildlife.org/about" />
-                <meta property="og:type" content="website" />
-                <meta property="og:image" content="/images/Mr-Chitters-on-log.jpg" />
-                <meta name="twitter:card" content="summary_large_image" />
             </Head>
             <main className={`${inter.className}`}>
                 <Hero />
@@ -49,7 +48,7 @@ export default function Home() {
                             <div className={`${styles.body_top_parent}`}>
                                 {/* bird pic */}
                                 <div className={`${styles.body_top_image}`}>
-                                    <Image src={"/images/birb.jpg"} alt="bird image" width={700} height={700} />
+                                    <Image src={"/images/birb.jpg"} alt="A rescued bird at Rogers Wildlife Rehabilitation Center in Hutchins, Texas" width={700} height={700} />
                                 </div>
                                 {/* paragraph */}
                                 <p className={`${styles.body_top_p}`}>

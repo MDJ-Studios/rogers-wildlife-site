@@ -7,10 +7,17 @@ import { Inter } from "next/font/google";
 import Layout from "@/components/base/layout";
 import Hero from "@/components/home/hero";
 import DonateButton from "@/components/ui/donate-button";
+import SEO from "@/components/seo";
+import { SITE_URL, generateBreadcrumbs } from "@/lib/seo-config";
 
 import styles from "@/styles/pages/see-our-birds.module.css";
 
 const inter = Inter({ subsets: ["latin"] });
+
+const breadcrumbs = generateBreadcrumbs([
+    { name: "Home", url: SITE_URL },
+    { name: "See Our Birds", url: `${SITE_URL}/see-our-birds` },
+]);
 
 export async function getStaticProps() {
     try {
@@ -40,24 +47,16 @@ export async function getStaticProps() {
 export default function SeeOurBirds({ assets }) {
     return (
         <>
+            <SEO
+                title="Meet Our Rescued Birds | Rogers Wildlife Rehabilitation Center - Adopt & Donate"
+                description="Meet the rescued birds living at Rogers Wildlife Rehabilitation Center. See hawks, owls, and more. Donate to support their ongoing care and rehabilitation."
+                path="/see-our-birds"
+            />
             <Head>
-                <title>See Our Birds | Rogers Wildlife Rehabilitation Center</title>
-                <meta
-                    name="description"
-                    content="Explore the beautiful birds at Rogers Wildlife Rehabilitation Center. Our gallery showcases a variety of bird species we have helped rehabilitate."
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
                 />
-                <link rel="canonical" href="https://rogerswildlife.org/see-our-birds" />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <link rel="icon" href="/favicon.ico" />
-                <meta property="og:title" content="See Our Birds | Rogers Wildlife Rehabilitation Center" />
-                <meta
-                    property="og:description"
-                    content="Explore the beautiful birds at Rogers Wildlife Rehabilitation Center. Our gallery showcases a variety of bird species we have helped rehabilitate."
-                />
-                <meta property="og:url" content="https://rogerswildlife.org/see-our-birds" />
-                <meta property="og:type" content="website" />
-                <meta property="og:image" content="/images/Mr-Chitters-on-log.jpg" />
-                <meta name="twitter:card" content="summary_large_image" />
             </Head>
             <main className={`${inter.className}`}>
                 <Hero />
