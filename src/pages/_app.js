@@ -1,13 +1,79 @@
 import "@/styles/globals.css";
 import "@/utils/fortawesomeconfig";
-import { useEffect, useRef, useCallback } from "react";
-import { useRouter } from "next/router";
+import { useEffect, useCallback } from "react";
+import Head from "next/head";
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Organization", "AnimalShelter"],
+      "@id": "https://rogerswildlife.org/#organization",
+      name: "Rogers Wildlife Rehabilitation Center",
+      alternateName: "RWRC",
+      url: "https://rogerswildlife.org",
+      logo: "https://rogerswildlife.org/images/Mr-Chitters-on-log.jpg",
+      description:
+        "A 501(c)(3) nonprofit bird rescue and rehabilitation center in Dallas-Fort Worth, Texas that has treated over 120,000 birds since 1989.",
+      telephone: "(972) 225-4000",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "1430 E Cleveland Rd",
+        addressLocality: "Hutchins",
+        addressRegion: "TX",
+        postalCode: "75141",
+        addressCountry: "US",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 32.5133,
+        longitude: -96.7058,
+      },
+      openingHoursSpecification: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ],
+        opens: "09:00",
+        closes: "16:00",
+      },
+      sameAs: [
+        "https://www.facebook.com/rogerswildlife/",
+        "https://www.instagram.com/rogerswildlife/",
+        "https://www.pinterest.com/rogerswildlife/",
+      ],
+      nonprofitStatus: "Nonprofit501c3",
+      foundingDate: "1989",
+      areaServed: {
+        "@type": "GeoCircle",
+        geoMidpoint: {
+          "@type": "GeoCoordinates",
+          latitude: 32.7767,
+          longitude: -96.797,
+        },
+        geoRadius: "100 mi",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://rogerswildlife.org/#website",
+      url: "https://rogerswildlife.org",
+      name: "Rogers Wildlife Rehabilitation Center",
+      publisher: {
+        "@id": "https://rogerswildlife.org/#organization",
+      },
+    },
+  ],
+};
 
 export default function App({ Component: Page, pageProps }) {
-  const router = useRouter();
-  const overlayRef = useRef(null);
-  const iframeContainerRef = useRef(null);
-  const excludedPaths = useRef(["/how-to-help"]); // Use ref for excludedPaths to avoid re-creating the array
+  // overlay and iframeContainer are created inside the effect when needed
 
   const cacheBustUrl = useCallback((url) => {
     const parsedUrl = new URL(url);
@@ -50,7 +116,36 @@ export default function App({ Component: Page, pageProps }) {
   }, []);
 
   useEffect(() => {
-    if (excludedPaths.current.includes(router.pathname)) return;
+    // Lazy-load the global chatbot loader on first user interaction (or fallback)
+    const loaderSrc = 'https://beta.leadconnectorhq.com/loader.js';
+    let injected = false;
+
+    function injectLoader() {
+      if (injected) return;
+      if (document.querySelector(`script[src="${loaderSrc}"]`)) {
+        injected = true;
+        return;
+      }
+      injected = true;
+      const s = document.createElement('script');
+      s.src = loaderSrc;
+      s.setAttribute('data-resources-url', 'https://beta.leadconnectorhq.com/chat-widget/loader.js');
+      s.setAttribute('data-widget-id', '68c46a5f916fc50e26136934');
+      s.async = true;
+      document.body.appendChild(s);
+      // detach listeners after injection
+      detachListeners();
+      if (fallbackTimer) clearTimeout(fallbackTimer);
+    }
+
+    const triggers = ['click', 'touchstart', 'scroll', 'mousemove', 'keydown'];
+    function onFirstInteraction() { injectLoader(); }
+    function attachListeners() { triggers.forEach(e => window.addEventListener(e, onFirstInteraction, { once: true, passive: true })); }
+    function detachListeners() { triggers.forEach(e => window.removeEventListener(e, onFirstInteraction, { once: true, passive: true })); }
+
+    attachListeners();
+    // fallback: inject after 4s even if there's no interaction
+    const fallbackTimer = setTimeout(() => injectLoader(), 4000);
 
     const formLinkAttr = "zeffy-form-link";
     const iframeId = "zeffy-iframe";
@@ -67,7 +162,7 @@ export default function App({ Component: Page, pageProps }) {
       opacity: 0;
     `;
 
-    const overlay = document.createElement("div");
+  const overlay = document.createElement("div");
     Object.assign(overlay, {
       style: `
         display: none;
@@ -83,7 +178,7 @@ export default function App({ Component: Page, pageProps }) {
       `,
       ariaHidden: "true",
     });
-    overlayRef.current = overlay;
+  // overlay is a local DOM node used by setupForms; no ref needed
 
     const setupForms = () => {
       const formLinks = document.querySelectorAll(`[${formLinkAttr}]`);
@@ -104,7 +199,6 @@ export default function App({ Component: Page, pageProps }) {
         Object.keys(formGroups).forEach(formUrl => {
           const iframeContainer = document.createElement("div");
           Object.assign(iframeContainer, { style: hiddenStyle, ariaHidden: "true" });
-          iframeContainerRef.current = iframeContainer;
 
           const iframe = document.createElement("iframe");
           Object.assign(iframe, {
@@ -162,7 +256,19 @@ export default function App({ Component: Page, pageProps }) {
     return () => {
       if (cleanup) cleanup();
     };
-  }, [router.pathname, adjustIframeContainer, cacheBustUrl, hideOverlay, showOverlay]);
+  }, [cacheBustUrl, adjustIframeContainer, hideOverlay, showOverlay]);
 
-  return <Page {...pageProps} />;
+  return (
+    <>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
+      </Head>
+      <Page {...pageProps} />
+    </>
+  );
 }

@@ -21,7 +21,7 @@ export function SocialIcon({ type, size }) {
     const link = types[type].link;
 
     return (
-        <a href={link} target="_blank">
+        <a href={link} target="_blank" rel="noopener noreferrer">
             <FontAwesomeIcon icon={icon} size={size} />
         </a>
     );

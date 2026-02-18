@@ -12,9 +12,9 @@ export default function Title() {
                     <SocialIcon type="pt" size="3x" />
                 </div>
                 <div className={styles.title_container}>
-                    <h2>
+                    <h1>
                         Welcome to Rogers Wildlife <br /> Rehabilitation Center
-                    </h2>
+                    </h1>
                 </div>
             </div>
         </div>

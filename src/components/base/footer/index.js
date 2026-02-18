@@ -7,14 +7,14 @@ export default function Footer() {
     const linkObjs = [
         { name: "Home", path: "/" },
         { name: "Our Story", path: "/about" },
-        // NOTE: Not sure if we need this right now
-        // { name: "In the News", path: "/" },
         { name: "Found a Bird?", path: "/found-a-bird" },
         { name: "How to Help", path: "/how-to-help" },
-        // { name: "Photo Gallery", path: "/see-our-birds" },
-        // NOTE: Not sure if we need this right now
-        // { name: "Educational Birds", path: "/" },
         { name: "Contact Us", path: "/contact-us" },
+    ];
+
+    const linkObjsAlt = [
+        { name: "Privacy Policy", path: "/privacy-policy" },
+        { name: "Terms of Service", path: "/terms-of-service" },
     ];
 
     const links = linkObjs.map((obj) => {
@@ -22,6 +22,15 @@ export default function Footer() {
             <span key={obj.name}>
                 <Link href={obj.path}>{obj.name}</Link>
                 {obj.path != "/contact-us" ? " | " : null}
+            </span>
+        );
+    });
+
+    const linksAlt = linkObjsAlt.map((obj) => {
+        return (
+            <span key={obj.name}>
+                <Link href={obj.path}>{obj.name}</Link>
+                {obj.path != "/terms-of-service" ? " | " : null}
             </span>
         );
     });
@@ -35,10 +44,14 @@ export default function Footer() {
             </div>
             <footer className={styles.footer}>
                 <div className={styles.footer_links}>{links}</div>
+                <div className={styles.footer_links}>{linksAlt}</div>
                 <br />
-                <div>
-                    <p>Rogers Wildlife Rehabilitation Center <br />1430 E Cleveland Rd<br />Hutchins, TX 75141</p>
-                </div>
+                <address>
+                    Rogers Wildlife Rehabilitation Center<br />
+                    1430 E Cleveland Rd<br />
+                    Hutchins, TX 75141<br />
+                    <a href="tel:1-972-225-4000">(972) 225-4000</a>
+                </address>
                 <br />
                 <div>
                     <p>
